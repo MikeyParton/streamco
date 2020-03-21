@@ -1,68 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Considerations
 
-## Available Scripts
+## State management
+- I decided to use a reducer to handle state updates. It is probably overkill because there are only really 2 pieces of state, but doing it this way improves maintainability since cross cutting state updates can be modelled more like reactions to events.
+- I used context to share the global state with the movies & series pages. For this simple application, state could have easily just been lifted up to the parent App component. However this would mean that you'd have to load the feed even when the user visits the homepage. With context, we can defer loading it until the user really needs it and improve performance.
 
-In the project directory, you can run:
+## Sorting/filtering
+- After fetching the feed I decided to sort it straight away. There are only 100 elements in the array and each page requires the same sorting, so I figured it was better to do it once and store the result.
+- To show the programTypes on each page, I made a utility function to filter and find the first 21 that match. At the moment this is recalculated on every render. Performance could be improved for multiple visits in the future by caching the result.
 
-### `yarn start`
+## Components/CSS
+- Each page is split into its own chunk with React Lazy. While the page chunk is loading, Suspense provides a blank fallback. I chose a blank fallback because the chunk loads relatively fast and I wanted to avoid the loading state flash. Once Concurrent React is stable this could be handled by the maxDuration prop.
+- I chose to use no css processing or frameworks, just good old fashioned BEM. If this were a production application, I would at least want to use some sort of pre-processor so I could use SASS. CSS modules as a bare minimum could also help organise the scope of component based styles.
+- Lots of components have ended up being quite specific for the use cases I needed. It's not bad for now, but obviously components like the Grid would be made more generalised if other use cases arise.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Typechecks
+- If there was more time, I would have liked to include something like Typescript to improve maintainability. But since the app is quite simple, I decided to focus my efforts elsewhere.

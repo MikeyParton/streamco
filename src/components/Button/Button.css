@@ -1,0 +1,12 @@
+.button {
+  background-color: #383838;
+  background-image: linear-gradient(to bottom, #383838 0, #434343 100%);
+  background-repeat: repeat-x;
+  border: none;
+  color: white;
+  line-height: 2rem;
+  font-size: 14px;
+  padding: 0 12px;
+  margin-left: 12px;
+  cursor: pointer;
+}

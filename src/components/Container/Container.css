@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.container--column {
+  width: auto;
+  flex-direction: column;
+}
+
+.container--centered {
+  align-items: center;
+}
+
+@media (min-width: 568px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

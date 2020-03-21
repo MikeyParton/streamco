@@ -1,0 +1,9 @@
+.banner {
+  background-color: #383838;
+  padding: 12px 0;
+}
+
+.banner__heading {
+  font-size: 20px;
+  color: white;
+}

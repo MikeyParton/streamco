@@ -1,0 +1,23 @@
+.nav {
+  background-repeat: repeat-x;
+  background-color: #09f;
+  background-image: linear-gradient(to bottom, #09f 0, #06f 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.nav__title {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+.nav__actions {
+  margin-left: auto;
+}
+
+.nav__link {
+  color: white;
+}
