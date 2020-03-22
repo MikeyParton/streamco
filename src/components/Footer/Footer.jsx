@@ -13,15 +13,15 @@ const navigationLinks = [
 ];
 
 const socialLinks = [
-  { title: 'Facebook', icon: './facebook-white.svg' },
-  { title: 'Twiiter', icon: './twitter-white.svg' },
-  { title: 'Instagram', icon: './instagram-white.svg' }
+  { title: 'Facebook', icon: '/facebook-white.svg' },
+  { title: 'Twiiter', icon: '/twitter-white.svg' },
+  { title: 'Instagram', icon: '/instagram-white.svg' }
 ];
 
 const storeLinks = [
-  { title: 'App Store', icon: './app-store.svg' },
-  { title: 'Play Store', icon: './play-store.svg' },
-  { title: 'Windows Store', icon: './windows-store.svg' },
+  { title: 'App Store', icon: '/app-store.svg' },
+  { title: 'Play Store', icon: '/play-store.svg' },
+  { title: 'Windows Store', icon: '/windows-store.svg' },
 ];
 
 function Footer() {
